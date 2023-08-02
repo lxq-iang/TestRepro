@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TestRepro.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TestRepro"
+    Shell.NavBarHasShadow="True"
+    FlyoutWidth="300">
+
+
+    <Shell.FlyoutBackground>
+        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,1">
+            <GradientStop Color="DarkGreen"
+                          Offset="1.0" />
+            <GradientStop Color="DarkCyan"
+                          Offset="0.6" />
+        </LinearGradientBrush>
+    </Shell.FlyoutBackground>
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid RowDefinitions="180,*"
+                  ColumnDefinitions="180,*"
+                  HeightRequest="200"
+                  Padding="10">
+                <Image Aspect="AspectFit" 
+                       x:Name="connectionSignal"
+                       Source="connectedsignalr.png" 
+                       HorizontalOptions="End" 
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       IsVisible="{Binding IsConnected}"
+                       HeightRequest="40"/>
+                <Label Text="{Binding IsConnected}"
+                       FontSize="20"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Start" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    <FlyoutItem Title="首页" Icon="home.png" >
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"/>
+    </FlyoutItem>
+</Shell>
